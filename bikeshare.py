@@ -34,19 +34,21 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        
-        month = input("Do you filter by month? enter a month that you want to filter by it.... if you don't want to filter by           month enter no.")
-    
-        if month not in month_data and month != 'all':
+      try:  
+        month = input("Do you filter by month? enter a month that you want to filter by it.... if you don't want to filter by month enter all.")
+      except KeyError:
+        print('Invalid Entry')
+        continue
+      if month not in month_data and month != 'all':
             print('please enter a valid month name')
-        else:
-            break
+      else:
+          break
         
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
       try:
-        day = int(input("Do you filter by day of a week? enter a day that you want to filter by it in numbers.... if you don't         want to filter by day enter no."))
+        day = input("Do you filter by day of a week? enter a day that you want to filter by it in numbers.... if you don't want to filter by day enter all.")
       except KeyError:
         print("That's not a valid number.... please enter a valid number")
         continue
@@ -57,7 +59,7 @@ def get_filters():
         break
         
     
-      print('you have entered:\nCity {}\nMonth: {}\nDay: {}'.format(city.title(), month.title(), day.title()))
+    print('you have entered:\nCity {}\nMonth: {}\nDay: {}'.format(city.title(), month.title(), day.title()))
     print('-'*40)
     return city, month, day
 
